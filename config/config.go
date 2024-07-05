@@ -73,7 +73,7 @@ func init() {
 			DBName:   "vpay",
 		},
 	}
-	err := loadConfigFile(utils.GetCWDir() + "/config.yaml")
+	err := loadConfigFile("config.yaml")
 	if err != nil {
 		// 配置文件加载失败，写一个默认的配置文件
 		configStr := `

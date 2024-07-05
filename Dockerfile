@@ -1,11 +1,15 @@
 FROM golang:latest AS builder
 
+# 设置代理环境变量
+ARG PROXY
+ENV http_proxy=${PROXY} https_proxy=${PROXY}
+
 WORKDIR /src
 
 COPY . /src
 
 # 设置 Go module 代理
-ENV GOPROXY=https://goproxy.cn,direct
+ENV GOPROXY=https://proxy.golang.org,direct
 
 # 下载并安装依赖
 RUN go mod download && go mod verify
@@ -32,3 +36,6 @@ COPY --from=builder /app/vmq /app/vmq
 
 # 从 frontend 阶段拷贝前端文件
 COPY --from=frontend /src/frontend/dist /app/web
+
+# 重置代理配置
+ENV http_proxy='' https_proxy=''

@@ -31,3 +31,16 @@
 ## 致谢
 
 - [V 免签](https://github.com/szvone/Vmq)
+
+
+# 其他
+
+复制并自定义配置
+```shell
+cp config.example.yaml config.yaml
+```
+
+复制并自定义`docker-compose.yml`配置，如果使用远程的数据，可移除docker-compose.yml中的数据库容器，直接在config.yaml配置即可
+```shell
+cp docker-compose.example.yml docker-compose.yml
+```

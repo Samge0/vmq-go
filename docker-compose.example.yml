@@ -5,6 +5,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # If you need to configure a proxy, you can enable this
+        # PROXY: http://192.168.50.48:7890
+        PLACEHOLDER: other params
     ports:
       - "8080:8080"
     volumes:
